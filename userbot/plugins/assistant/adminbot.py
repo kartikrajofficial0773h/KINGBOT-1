@@ -12,9 +12,9 @@ from telethon.tl.types import (
 # =================== CONSTANT ===================
 PP_TOO_SMOL = "`The image is too small`"
 PP_ERROR = "`Failure while processing the image`"
-NO_ADMIN = "`I am not an admin nub nibba!`"
+NO_ADMIN = "`SED I M NOT ADMIN HERE!!`"
 NO_PERM = (
-    "`I don't have sufficient permissions! This is so sed. Alexa play Tera Baap Aaya`"
+    "`SED I HAVE NO PERMISSION FOR DO THAT LOL`"
 )
 NO_SQL = "`Running on Non-SQL mode!`"
 
@@ -54,7 +54,7 @@ MUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=True)
 UNMUTE_RIGHTS = ChatBannedRights(until_date=None, send_messages=False)
 
 
-@tgbot.on(events.NewMessage(pattern="^/bun(?: |$)(.*)"))
+@tgbot.on(events.NewMessage(pattern="^/ban(?: |$)(.*)"))
 async def ban(event):
     noob = event.sender_id
     userids = []
@@ -98,7 +98,7 @@ async def ban(event):
         await event.reply(f"Banned  `{str(user.id)}` !")
 
 
-@tgbot.on(events.NewMessage(pattern="^/unbun(?: |$)(.*)"))
+@tgbot.on(events.NewMessage(pattern="^/unban(?: |$)(.*)"))
 async def nothanos(event):
     userids = []
     noob = event.sender_id
@@ -123,13 +123,13 @@ async def nothanos(event):
         return
     try:
         await event.client(EditBannedRequest(event.chat_id, user.id, UNBAN_RIGHTS))
-        await event.reply("`Unbanned Successfully. Granting another chance.🚶`")
+        await event.reply("`Unbanned Successfully. Granting another chance this nub`")
     except BadRequestError:
         await event.reply("`No Permission 🤭`")
         return
 
 
-@tgbot.on(events.NewMessage(pattern="^/prumote(?: |$)(.*)"))
+@tgbot.on(events.NewMessage(pattern="^/promote(?: |$)(.*)"))
 async def promote(event):
     userids = []
     noob = event.sender_id
@@ -169,7 +169,7 @@ async def promote(event):
     # Try to promote if current user is admin or creator
     try:
         await event.client(EditAdminRequest(event.chat_id, user.id, new_rights, rank))
-        await event.reply("`Promoted Successfully! Now gib Party`")
+        await event.reply("`Promoted Successfully!!`")
 
     # If Telethon spit BadRequestError, assume
     # we don't have Promote permission
@@ -178,7 +178,7 @@ async def promote(event):
         return
 
 
-@tgbot.on(events.NewMessage(pattern="^/demute(?: |$)(.*)"))
+@tgbot.on(events.NewMessage(pattern="^/demote(?: |$)(.*)"))
 async def demote(event):
     userids = []
     noob = event.sender_id
@@ -246,7 +246,7 @@ async def pin(event):
 
     # If not admin and not creator, return
     if not admin and not creator:
-        await event.reply("I Need Administration Permission 🤔")
+        await event.reply("I Need Administration Permission to pin this msg 🤔")
         return
 
     to_pin = event.reply_to_msg_id
@@ -264,7 +264,7 @@ async def pin(event):
     except BadRequestError:
         await event.reply("No Permission 🥺")
         return
-    await event.reply("`Pinned Successfully!`")
+    await event.reply("`Haha Pinned Successfully!`")
     user = await get_user_from_id(msg.sender_id, msg)
 
 
