@@ -31,7 +31,7 @@
     "ALIVE_NAME": {
       "description": "Fill your Full name or Username like @kartikrajofficial.",
       "value": "KINGBOT",
-      "required": flase
+      "required": true
     },
     "AUTONAME": {
       "description": "Fill your Name which will show on .autoname cmd nd used in .revert cmd when u use .clone.",
